@@ -25,5 +25,5 @@ Once these dictionaries are assembled, the simulation can be called:
 # axes, constants and system are all dicts 
 lib.run(axes, constants, system)
 ```
-Upon completion, the simulation returns the output folder filepath.  The data can then be imported as a `Data` object using `l.load(fpath)`.  Again, `run.py` has explicitly performs this.  
+Upon completion, the simulation returns the output folder filepath.  The data can then be imported as a `Data` object using `l.load(fpath)`.  Again, `run.py` is an explicit template that performs all these actions.  
 
