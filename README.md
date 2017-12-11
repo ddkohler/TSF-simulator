@@ -12,4 +12,18 @@ To setup, clone this repo to a `PYTHONPATH` folder.  You will also need [NISE](h
 * `run.py` - a template for running NISE simulations and converting into `WrightTools.Data` objects
 * `H_TRSF.png` - image illustrating the states built in to this hamiltonian
 
+## Running
+
+The simulation is based on the `lib.run` command, which must be supplied with three dictionaries:  
+
+1.  The `axes` dictionary:  controls the multidimensional space explored.  Keys define the properties of the laser that are changed (e.g., `'w2'`), and values are the points scanned (e.g. `numpy.linspace`)
+2.  The `constants` dictionary: controls the parameters of the laser that are not scanned (e.g. `constants['d2'] = 0`)
+3.  The `system` dictionary:  this controls the properties of the model system (dipoles, resonant frequencies, and dephasing rates).  The keys of this dictionary correspond to parameters of the Hamiltonian class `NISE.hamiltonians.H_TRSF` (all important keys can be found by inspecting `NISE.hamiltonians.H_TRSF.out_vars`).
+
+Once these dictionaries are assembled, the simulation can be called:
+```
+# axes, constants and system are all dicts 
+lib.run(axes, constants, system)
+```
+Upon completion, the simulation returns the output folder filepath.  The data can then be imported as a `Data` object using `l.load(fpath)`.  Again, `run.py` has explicitly performs this.  
 
